@@ -16,6 +16,8 @@ const Home = () => {
     // when a user types in the name of the country in the field.
     const [ searchField, setSearchField ] = useState('');
 
+    const [ filteredCountries, setFilteredCountries ] = useState(countries);
+
 
 
     // fetches country data when initial component renders.
@@ -26,16 +28,26 @@ const Home = () => {
     },[])
     
     
-    console.log(countries, "global");
+   // console.log(countries, "global");
 
     // function that runs and sets the user text string when a user searches for a country
     const onSearchChangeHandler = (e) => {
+        console.log("i'v changed onsearch handler");
         const searchFieldString = e.target.value.toLocaleLowerCase();
 
         console.log(searchFieldString);
 
         setSearchField(searchFieldString);
-    }
+        console.log(searchField, "searchfield")
+    };
+
+    useEffect( () => {
+        const filteredSearch = countries.filter( (country) => country.name.common.toLocaleLowerCase().includes(searchField));
+        console.log(filteredCountries, "filter");
+
+        setFilteredCountries(filteredSearch);
+
+    }, [countries, searchField])
 
 
 
@@ -45,7 +57,7 @@ const Home = () => {
             <div>
             {/*  i need to pass region data into the searchBox */}
                 <SearchBox onChangeHandler={onSearchChangeHandler} />
-                <CardList countries={countries}/>
+                <CardList countries={filteredCountries}/>
             </div>
         </>
     )
