@@ -1,0 +1,27 @@
+//todo: i need to convert all px to rems and ems
+// todo: add the right font to this style in index.css
+// todo: make country card width responsive by setting to 90%
+
+.country {
+  width: 250px;
+  min-height: 300px;
+//   box-shadow: 0 0 3px 5px hsl(0, 0, 0, 0.1);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  object-fit: cover;
+  /*   width: 90%; */
+  .country-img {
+    width: 100%;
+  }
+
+  .country-detail {
+    padding: 0 20px 20px;
+    font-size: 0.75rem;
+    * + * {
+      margin-top: 10px;
+    }
+    .info-label {
+      font-weight: 600;
+    }
+  }
+}
